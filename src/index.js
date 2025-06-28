@@ -9,6 +9,7 @@ const item2 = await createItem('Calça', 89.90, 3);
 
 await cartService.addItem(myCart, item1);
 await cartService.addItem(myCart, item2);
+await cartService.displayCart(myCart);
 
 await cartService.deleteItem(myCart, item1.name);
 await cartService.deleteItem(myCart, item2.name);
