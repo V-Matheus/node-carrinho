@@ -8,5 +8,9 @@ const item1 = await createItem('Camiseta', 29.90, 2);
 const item2 = await createItem('Calça', 89.90, 3);
 
 await cartService.addItem(myCart, item1);
-await cartService.addItem(myWhishlist, item2);
+await cartService.addItem(myCart, item2);
+
+await cartService.deleteItem(myCart, item1.name);
+await cartService.deleteItem(myCart, item2.name);
+
 await cartService.calculateTotal(myCart);
