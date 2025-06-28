@@ -1,7 +1,12 @@
+import * as cartService from './services/cart.js';
 import createItem from './services/item.js';
-const carrinho = []
+
+const myCart = []
+const myWhishlist = []
 
 const item1 = await createItem('Camiseta', 29.90, 2);
 const item2 = await createItem('Calça', 89.90, 3);
 
-console.log(item2.subtotal());
+await cartService.addItem(myCart, item1);
+await cartService.addItem(myWhishlist, item2);
+await cartService.calculateTotal(myCart);
