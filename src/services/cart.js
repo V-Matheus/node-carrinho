@@ -11,7 +11,12 @@ async function deleteItem(userCart, name) {
   }
 }
 
-async function removeItem(userCart, index) {}
+async function removeItem(userCart, index) {
+  const deletedItem = index - 1;
+  if (deletedItem >= 0 && userCart.length > deletedItem) {
+    userCart.splice(deletedItem, 1);
+  }
+}
 
 async function calculateTotal(userCart) {
   const result = userCart.reduce((total, item) => total + item.subtotal(), 0);
