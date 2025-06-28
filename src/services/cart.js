@@ -3,18 +3,26 @@ async function addItem(userCart, item) {
 }
 
 async function deleteItem(userCart, name) {
-  const index = userCart.findIndex((item) => item.name === name);
-
-  if (index !== -1) {
-    userCart.splice(index, 1);
-    console.log(`Item ${name} removido do carrinho.`);
-  }
-}
-
-async function removeItem(userCart, index) {
   const deletedItem = index - 1;
   if (deletedItem >= 0 && userCart.length > deletedItem) {
     userCart.splice(deletedItem, 1);
+  }
+}
+
+async function removeItem(userCart, item) {
+  const indexFound = userCart.findIndex((p) => p.name === item.name);
+
+  if(indexFound === -1) {
+    console.log(`Item ${item.name} não encontrado no carrinho.`);
+    return;
+  }
+
+  if(userCart[indexFound].quantity > 1) {
+    userCart[indexFound].quantity--;
+    console.log(`Quantidade do item ${item.name} reduzida para ${userCart[indexFound].quantity}.`);
+  } else {
+    userCart.splice(indexFound, 1);
+    console.log(`Item ${item.name} removido do carrinho.`);
   }
 }
 
